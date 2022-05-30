@@ -1,12 +1,21 @@
-name: test
-on: [push]
+name: Notifier
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
 jobs:
-  check-bats-version:
+
+  notifyTelegram:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+    - name: send custom message
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          The ${{ github.event_name }} event triggered final step.
+          echo This event is a pull request that had an assignee removed.
