@@ -23,3 +23,5 @@ Objective : Sending A Telegram Message When A Push or Pull Request occurred.
 <br> Step 2 : run the following curl request, replace "TOKEN" with your Telegram BotFather Token =
 <br>  curl https://api.telegram.org/botTOKEN/getUpdates
 <br> Step 3 : your bot ID will be shown from there.
+
+.
